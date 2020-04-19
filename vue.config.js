@@ -1,3 +1,5 @@
 module.exports = {
-    publicPath: '/myfirst-app-vuejs/'
-}
+    publicPath: process.env.NODE_ENV === 'production'
+      ? '/my-project/'
+      : '/'
+  }
