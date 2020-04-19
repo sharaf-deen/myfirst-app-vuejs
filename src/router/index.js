@@ -11,6 +11,11 @@ export default new VueRouter({
   mode: "history",
   routes: [
     { 
+      path: "/myfirst-app-vuejs", 
+      redirect: "/"  
+    },
+
+    { 
       path: "/", 
       component: Home 
     },
