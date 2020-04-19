@@ -10,14 +10,22 @@ Vue.use(VueRouter);
 export default new VueRouter({
   mode: "history",
   routes: [
-    { path: "/", component: Home },
-    { path: "/", redirect: "/question" },
+    { 
+      path: "/", 
+      component: Home 
+    },
     {
       path: "/question/",
       component: Question,
       props: true,
     },
-    { path: "/result", component: Result },
-    { path: "*", component: NotFound }
+    { 
+      path: "/result", 
+      component: Result 
+    },
+    { 
+      path: "*", 
+      component: NotFound 
+    }
   ]
 });
