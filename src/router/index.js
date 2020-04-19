@@ -16,11 +16,6 @@ export default new VueRouter({
       path: "/question/",
       component: Question,
       props: true,
-      // beforeEnter: (to, from, next) => {
-      //   const difficulty = to.params.difficulty;
-      //   if (!["easy", "medium", "hard"].includes(difficulty)) next("/notfound");
-      //   next();
-      // }
     },
     { path: "/result", component: Result },
     { path: "*", component: NotFound }
