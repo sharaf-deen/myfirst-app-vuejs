@@ -1,15 +1,16 @@
 <template>
-<div id="app">
-  <router-link to="/">Home</router-link> |
-  <router-link to="/Quiz">Start the Quiz</router-link>
-  <router-view/>
-</div>
+  <div id="app">
+    <Navbar />
+    <router-view/>
+  </div>
 </template>
 
 <script>
-
+import Navbar from '@/components/Navbar'
+export default {
+  name: 'App',
+  components: {
+    Navbar
+  }
+}
 </script>
-
-<style>
-
-</style>

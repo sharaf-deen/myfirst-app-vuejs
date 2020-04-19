@@ -1,21 +1,28 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/components/Home'
-import Quiz from '@/components/Quiz'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../components/Home.vue";
+import Question from "../components/Question.vue";
+import Result from "../components/Result.vue";
+import NotFound from "../components/NotFound.vue";
 
-Vue.use(Router)
+Vue.use(VueRouter);
 
-export default new Router({
+export default new VueRouter({
+  mode: "history",
   routes: [
+    { path: "/", component: Home },
+    { path: "/", redirect: "/question" },
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path: "/question/",
+      component: Question,
+      props: true,
+      // beforeEnter: (to, from, next) => {
+      //   const difficulty = to.params.difficulty;
+      //   if (!["easy", "medium", "hard"].includes(difficulty)) next("/notfound");
+      //   next();
+      // }
     },
-    {
-      path: '/Quiz',
-      name: 'quiz',
-      component: Quiz
-    },
+    { path: "/result", component: Result },
+    { path: "*", component: NotFound }
   ]
-})
+});
