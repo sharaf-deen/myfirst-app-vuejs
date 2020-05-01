@@ -48,6 +48,13 @@ const router = new VueRouter({
     { 
       path: "*", 
       component: NotFound 
+    },
+    {
+      path: "/myfirst-app-vuejs",
+      component: Home,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 });
