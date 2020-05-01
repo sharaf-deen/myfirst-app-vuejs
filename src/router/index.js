@@ -51,7 +51,7 @@ const router = new VueRouter({
     },
     {
       path: "/myfirst-app-vuejs",
-      component: Home,
+      redirect: "/",
       meta: {
         requiresAuth: true
       }
