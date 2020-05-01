@@ -3,23 +3,32 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store from "./store"
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import store from "./store/index"
+import firebase from 'firebase'
+import VueSimpleAlert from "vue-simple-alert";
 
-import 'bootstrap/dist/css/bootstrap.css'
+Vue.use(VueSimpleAlert)
 
-// Install BootstrapVue
-Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  components: { App },
-  template: '<App/>'
+let app = null;
+
+// wait for firebase auth to init before creating the app
+firebase.auth().onAuthStateChanged((user) => {
+
+  // init app if not already created
+  if(!app) {
+    app = new Vue({
+      el: '#app',
+      router,
+      store,
+      components: { App },
+      template: '<App/>'
+    })
+  }
+  
+
 })
+
+/* eslint-disable no-new */

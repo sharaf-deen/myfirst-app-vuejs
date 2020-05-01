@@ -8,7 +8,7 @@
         <span>{{numCorrect}}/{{numTotal}}</span>
       </p>
       <div class="buttons">
-        <router-link class="button" to="/question">Play Again</router-link>
+        <router-link class="button" to="/">Play Again</router-link>
       </div>
     </div>
   </div>

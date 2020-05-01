@@ -5,7 +5,7 @@
       </router-link>
       <br><br><br>
         <h3 class="center-align grey-text" v-html="index+1 + ' of 10'"></h3>
-        <h3 class="center-align indigo-text" v-html="currentQuestion.question"></h3>
+        <h3 class="center-align deep-purple-text" v-html="currentQuestion.question"></h3>
         <br>
         <div v-for="(answer, index) in shuffledAnswers" :key="index" class="answers">
           <button class="chip" @click="selectAnswer(index)" :class="submitClass(index)" v-html="answer"></button>
@@ -28,6 +28,9 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "Question",
+  props: {
+    category: String
+  },
   data() {
     return {
       questions: [],
@@ -39,10 +42,13 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("getQuestions").then(() => {
+    this.$store.dispatch("getQuestions", this.category)
+    .then(() => {
       this.questions = this.$store.state.questions;
       this.$store.dispatch("resetDefault");
+      // console.log(this.questions)
     });
+    
   },
   computed: {
     answers() {
@@ -144,7 +150,7 @@ export default {
     padding: 20px;
     max-width: 500px
 }
-.quiz h2{
+.quiz h3{
     font-size: 2em;
     margin: 20px auto
 }
@@ -189,16 +195,16 @@ export default {
 }
 
 #submit {
-  background: #3f51b5;
+  background: #673ab7;
 }
 
 #submit:disabled {
-  background: #637af06c !important;
+  background: #9e6ef1 !important;
   cursor: not-allowed;
 }
 
 #submit:hover {
-  background: #6e81eb;
+  background: #9e6ef1;
 }
 
 #next {

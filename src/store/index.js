@@ -7,8 +7,9 @@ Vue.use(Vuex);
 const state = {
   questions: [],
   numCorrect: 0,
-  numTotal: 0
+  numTotal: 0,
 };
+
 const mutations = {
   UPDATE_QUESTIONS(state, payload) {
     state.questions = payload;
@@ -22,13 +23,13 @@ const mutations = {
   RESET_DEFAULT(state) {
     state.numTotal = 0;
     state.numCorrect = 0;
-  }
+  },
 };
 const actions = {
-  getQuestions({ commit }) {
+  getQuestions({ commit }, category) {
     return axios
       .get(
-        "https://opentdb.com/api.php?amount=10&difficulty=medium"
+        `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=medium`
       )
       .then(reponse => {
         commit("UPDATE_QUESTIONS", reponse.data.results);
