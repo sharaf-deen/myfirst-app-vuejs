@@ -49,13 +49,6 @@ const router = new VueRouter({
       path: "*", 
       component: NotFound 
     },
-    {
-      path: "/myfirst-app-vuejs",
-      redirect: "/",
-      meta: {
-        requiresAuth: true
-      }
-    }
   ]
 });
 
